@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Modern Resume</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#f3f4f6;
+
+    padding:40px;
+}
+
+.resume{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    background:white;
+
+    display:flex;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* LEFT SIDEBAR */
+
+.sidebar{
+
+    width:32%;
+
+    background:
+    linear-gradient(
+        180deg,
+        #1e3a8a,
+        #2563eb
+    );
+
+    color:white;
+
+    padding:35px;
+}
+
+.sidebar h2{
+
+    font-size:20px;
+
+    margin-bottom:15px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.3);
+
+    padding-bottom:8px;
+}
+
+.sidebar-section{
+
+    margin-bottom:30px;
+}
+
+.tag{
+
+    display:inline-block;
+
+    background:
+    rgba(255,255,255,0.15);
+
+    padding:8px 14px;
+
+    margin:5px;
+
+    border-radius:20px;
+
+    font-size:14px;
+}
+
+/* RIGHT SIDE */
+
+.content{
+
+    width:68%;
+
+    padding:40px;
+}
+
+.name{
+
+    font-size:42px;
+
+    color:#1e3a8a;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+.role{
+
+    color:#666;
+
+    font-size:18px;
+
+    margin-bottom:20px;
+}
+
+.contact{
+
+    margin-bottom:25px;
+
+    color:#444;
+
+    line-height:1.8;
+}
+
+.contact a{
+
+    color:#2563eb;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.section{
+
+    margin-bottom:30px;
+}
+
+.section h2{
+
+    color:#2563eb;
+
+    border-bottom:2px solid #dbeafe;
+
+    padding-bottom:8px;
+
+    margin-bottom:12px;
+}
+
+.section p{
+
+    line-height:1.8;
+
+    color:#333;
+}
+
+.project-card{
+
+    background:#f8fafc;
+
+    padding:15px;
+
+    border-left:4px solid #2563eb;
+
+    border-radius:8px;
+
+    margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- LEFT SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-section">
+
+            <h2>Skills</h2>
+
+            <div class="tag">
+                {{ resume.skills }}
+            </div>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <h2>Projects</h2>
+
+            <p>{{ resume.projects }}</p>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <h2>Certifications</h2>
+
+            <p>{{ resume.certifications }}</p>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <h2>Languages</h2>
+
+            <p>{{ resume.languages }}</p>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <h2>Achievements</h2>
+
+            <p>{{ resume.achievements }}</p>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT CONTENT -->
+
+    <div class="content">
+
+        <div class="name">
+
+            {{ resume.full_name }}
+
+        </div>
+
+        <div class="role">
+
+            Python Developer
+
+        </div>
+
+        <div class="contact">
+
+            {{ resume.email }}
+
+            |
+
+            {{ resume.phone }}
+
+            <br><br>
+
+            {% if resume.linkedin %}
+            <a href="{{ resume.linkedin }}" target="_blank">
+                LinkedIn
+            </a>
+            {% endif %}
+
+            {% if resume.github %}
+            |
+            <a href="{{ resume.github }}" target="_blank">
+                GitHub
+            </a>
+            {% endif %}
+
+            {% if resume.portfolio %}
+            |
+            <a href="{{ resume.portfolio }}" target="_blank">
+                Portfolio
+            </a>
+            {% endif %}
+
+        </div>
+
+        <div class="section">
+
+            <h2>Professional Summary</h2>
+
+            <p>
+                {{ resume.summary }}
+            </p>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Experience</h2>
+
+            <p>
+                {{ resume.experience }}
+            </p>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Education</h2>
+
+            <p>
+                {{ resume.education }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.dashboard-title{
+    color:white;
+    font-size:3rem;
+    font-weight:700;
+    text-align:center;
+}
+
+.dashboard-subtitle{
+    color:#cbd5e1;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+/* ANALYTICS */
+
+.analytics-card{
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1e3a8a
+    );
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,0.30);
+
+    transition:0.3s;
+}
+
+.analytics-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 30px rgba(37,99,235,0.45);
+}
+
+.analytics-number{
+
+    font-size:42px;
+
+    font-weight:bold;
+}
+
+.analytics-label{
+
+    margin-top:10px;
+
+    font-size:15px;
+}
+
+/* SEARCH */
+
+.search-box{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    padding:20px;
+
+    border-radius:20px;
+
+    margin-top:25px;
+
+    margin-bottom:35px;
+
+    backdrop-filter:blur(15px);
+}
+
+/* RESUME CARD */
+
+.resume-card{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    height:100%;
+
+    transition:0.3s;
+}
+
+.resume-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 30px rgba(37,99,235,0.20);
+}
+
+.resume-id{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+}
+
+.resume-name{
+
+    color:#3b82f6;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.resume-email,
+.resume-phone{
+
+    color:#e2e8f0;
+}
+
+/* BUTTONS */
+
+.action-buttons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    transition:all 0.3s ease;
+
+    font-weight:600;
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* EMPTY */
+
+.empty-card{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:60px;
+
+    color:white;
+}
+
+</style>
+
+<div class="container">
+
+<h1 class="dashboard-title">
+    Resume Dashboard
+</h1>
+
+<p class="dashboard-subtitle">
+    Manage all your resumes in one place
+</p>
+
+<!-- ANALYTICS -->
+
+<div class="row mb-4">
+
+<div class="col-lg-3 col-md-6 mb-3">
+
+    <div class="analytics-card">
+
+        <div class="analytics-number">
+            {{ resumes|length }}
+        </div>
+
+        <div class="analytics-label">
+            Total Resumes
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+    <div class="analytics-card">
+
+        <div class="analytics-number">
+            3
+        </div>
+
+        <div class="analytics-label">
+            Templates Available
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+    <div class="analytics-card">
+
+        <div class="analytics-number">
+            {{ resumes|length }}
+        </div>
+
+        <div class="analytics-label">
+            PDF Downloads
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-3 mb-3">
+
+    <div class="analytics-card">
+
+        <div class="analytics-number">
+
+            {% if resumes %}
+                #{{ resumes[0].id }}
+            {% else %}
+                0
+            {% endif %}
+
+        </div>
+
+        <div class="analytics-label">
+            Latest Resume
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<form action="/dashboard" method="GET">
+
+<div class="row">
+
+<div class="col-md-10">
+
+<input
+type="text"
+name="search"
+value="{{ search }}"
+class="form-control"
+placeholder="Search by Name, Email or Skills">
+
+</div>
+
+<div class="col-md-2">
+
+<button
+class="btn btn-primary w-100">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<!-- RESUMES -->
+
+<div class="row">
+
+{% for resume in resumes %}
+
+<div class="col-md-6 mb-4">
+
+<div class="resume-card">
+
+<div class="resume-id">
+Resume #{{ resume.id }}
+</div>
+
+<div class="resume-name">
+{{ resume.full_name }}
+</div>
+
+<div class="resume-email">
+{{ resume.email }}
+</div>
+
+<div class="resume-phone">
+{{ resume.phone }}
+</div>
+
+<div class="action-buttons">
+
+<a href="/edit/{{ resume.id }}"
+class="btn btn-warning">
+
+Edit
+
+</a>
+
+<a href="/delete/{{ resume.id }}"
+class="btn btn-danger">
+
+Delete
+
+</a>
+
+<a href="/preview/{{ resume.id }}"
+class="btn btn-info">
+
+Preview
+
+</a>
+
+<a href="/download/{{ resume.id }}"
+class="btn btn-success">
+
+PDF
+
+</a>
+
+<a href="/download_docx/{{ resume.id }}"
+class="btn btn-primary">
+
+DOCX
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% if resumes|length == 0 %}
+
+<div class="empty-card">
+
+<h2>
+📄 No Resumes Found
+</h2>
+
+<p>
+Create your first professional resume.
+</p>
+
+<a href="/builder"
+class="btn btn-primary">
+
+Create Resume
+
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

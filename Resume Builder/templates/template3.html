@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Premium Portfolio Resume</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(37,99,235,0.3),
+    transparent 40%),
+    #020817;
+
+    padding:40px;
+
+    color:white;
+}
+
+/* MAIN CONTAINER */
+
+.resume{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* HEADER */
+
+.header{
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #1e3a8a
+    );
+
+    padding:60px;
+
+    text-align:center;
+}
+
+.header h1{
+
+    font-size:52px;
+
+    margin-bottom:15px;
+
+    font-weight:bold;
+}
+
+.role{
+
+    font-size:20px;
+
+    opacity:0.9;
+
+    margin-bottom:20px;
+}
+
+.contact{
+
+    line-height:2;
+}
+
+.contact a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    margin:0 8px;
+}
+
+/* CONTENT GRID */
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 2fr;
+
+    gap:25px;
+
+    padding:30px;
+}
+
+/* CARDS */
+
+.card{
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+}
+
+.card h2{
+
+    color:#60a5fa;
+
+    margin-bottom:15px;
+
+    border-left:5px solid #3b82f6;
+
+    padding-left:10px;
+}
+
+.card p{
+
+    line-height:1.8;
+}
+
+/* SKILLS */
+
+.skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.skill{
+
+    background:
+    rgba(59,130,246,0.25);
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    border:
+    1px solid rgba(59,130,246,0.5);
+}
+
+/* PROJECT CARDS */
+
+.project{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+    border-left:4px solid #3b82f6;
+}
+
+.project-title{
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+
+    color:#93c5fd;
+}
+
+/* FULL WIDTH */
+
+.full-width{
+
+    grid-column:1 / -1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            {{ resume.full_name }}
+        </h1>
+
+        <div class="role">
+            Python Developer
+        </div>
+
+        <div class="contact">
+
+            {{ resume.email }}
+
+            |
+
+            {{ resume.phone }}
+
+            <br>
+
+            {% if resume.linkedin %}
+            <a href="{{ resume.linkedin }}" target="_blank">
+                LinkedIn
+            </a>
+            {% endif %}
+
+            {% if resume.github %}
+            <a href="{{ resume.github }}" target="_blank">
+                GitHub
+            </a>
+            {% endif %}
+
+            {% if resume.portfolio %}
+            <a href="{{ resume.portfolio }}" target="_blank">
+                Portfolio
+            </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- LEFT -->
+
+        <div>
+
+            <div class="card">
+
+                <h2>Skills</h2>
+
+                <div class="skills">
+
+                    <div class="skill">
+                        {{ resume.skills }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Languages</h2>
+
+                <p>
+                    {{ resume.languages }}
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Certifications</h2>
+
+                <p>
+                    {{ resume.certifications }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div>
+
+            <div class="card">
+
+                <h2>Professional Summary</h2>
+
+                <p>
+                    {{ resume.summary }}
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Experience</h2>
+
+                <p>
+                    {{ resume.experience }}
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Education</h2>
+
+                <p>
+                    {{ resume.education }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="card full-width">
+
+            <h2>Projects</h2>
+
+            <div class="project">
+
+                <div class="project-title">
+                    Featured Project
+                </div>
+
+                <p>
+                    {{ resume.projects }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+
+        <div class="card full-width">
+
+            <h2>Achievements</h2>
+
+            <p>
+                {{ resume.achievements }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

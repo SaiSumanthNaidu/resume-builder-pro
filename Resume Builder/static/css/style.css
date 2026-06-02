@@ -1,0 +1,457 @@
+/* =========================
+GLOBAL
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+```
+font-family:Arial, Helvetica, sans-serif;
+
+background:
+radial-gradient(
+    circle at 20% 20%,
+    rgba(0,120,255,0.25),
+    transparent 25%
+),
+
+radial-gradient(
+    circle at 80% 70%,
+    rgba(0,100,255,0.18),
+    transparent 25%
+),
+
+radial-gradient(
+    circle at 50% 50%,
+    rgba(0,80,180,0.15),
+    transparent 40%
+),
+
+#020817;
+
+min-height:100vh;
+
+color:white;
+
+overflow-x:hidden;
+```
+
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+.navbar{
+
+```
+background:
+rgba(0,0,0,0.35) !important;
+
+backdrop-filter:blur(12px);
+
+border-bottom:
+1px solid rgba(255,255,255,0.08);
+```
+
+}
+
+.navbar-brand{
+
+    .logo-main{
+
+    color:#3b82f6;
+}
+
+.logo-pro{
+
+    color:#22c55e;
+}
+
+/* =========================
+HERO SECTION
+========================= */
+
+.hero-section{
+
+```
+background:
+linear-gradient(
+    135deg,
+    rgba(0,90,255,0.35),
+    rgba(0,40,120,0.35)
+);
+
+backdrop-filter:blur(20px);
+
+border:
+1px solid rgba(255,255,255,0.1);
+
+border-radius:25px;
+
+padding:80px;
+
+text-align:center;
+
+color:white;
+
+margin-bottom:35px;
+
+box-shadow:
+0 20px 50px rgba(0,100,255,0.2);
+```
+
+}
+
+.hero-section h1{
+
+```
+font-size:4rem;
+
+font-weight:bold;
+
+margin-bottom:20px;
+```
+
+}
+
+.hero-section p{
+
+```
+font-size:1.3rem;
+
+opacity:0.9;
+```
+
+}
+
+/* =========================
+FORM CARDS
+========================= */
+
+.form-section{
+
+```
+background:
+rgba(5,15,40,0.65);
+
+backdrop-filter:blur(20px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius:25px;
+
+padding:35px;
+
+margin-bottom:30px;
+
+box-shadow:
+0 15px 35px rgba(0,0,0,0.25);
+```
+
+}
+
+/* =========================
+TITLES
+========================= */
+
+.section-title{
+
+```
+color:white;
+
+font-size:30px;
+
+font-weight:bold;
+
+border-left:
+6px solid #3b82f6;
+
+padding-left:12px;
+
+margin-bottom:25px;
+```
+
+}
+
+/* =========================
+LABELS
+========================= */
+
+label{
+
+```
+color:white;
+
+font-weight:600;
+
+margin-bottom:8px;
+```
+
+}
+
+/* =========================
+INPUTS
+========================= */
+
+/* =========================
+   INPUTS
+========================= */
+
+.form-control,
+.form-select{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.12);
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    backdrop-filter:blur(10px);
+}
+
+.form-control::placeholder{
+
+    color:
+    rgba(255,255,255,0.5);
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    background:
+    rgba(255,255,255,0.08);
+
+    color:white;
+
+    border-color:#3b82f6;
+
+    box-shadow:
+    0 0 20px rgba(
+        59,
+        130,
+        246,
+        0.35
+    );
+
+    outline:none;
+}
+
+/* =========================
+   TEMPLATE CARDS
+========================= */
+
+.template-card{
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.template-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#3b82f6;
+
+    box-shadow:
+    0 15px 35px rgba(
+        59,
+        130,
+        246,
+        0.25
+    );
+}
+
+.template-card .card-body{
+
+    padding:25px;
+}
+
+.template-card h5{
+
+    color:white;
+
+    margin-top:10px;
+
+    font-weight:bold;
+}
+
+/* RADIO BUTTON */
+
+input[type="radio"]{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:#3b82f6;
+
+    cursor:pointer;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+/* BUTTONS */
+
+.btn{
+
+    transition:
+    all 0.3s ease;
+
+    font-weight:600;
+
+    border:none;
+}
+
+.btn:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover{
+
+    box-shadow:
+    0 8px 20px rgba(37,99,235,0.45);
+}
+
+.btn-success:hover{
+
+    box-shadow:
+    0 8px 20px rgba(22,163,74,0.45);
+}
+
+.btn-danger:hover{
+
+    box-shadow:
+    0 8px 20px rgba(220,38,38,0.45);
+}
+
+.btn-warning:hover{
+
+    box-shadow:
+    0 8px 20px rgba(245,158,11,0.45);
+}
+
+/* =========================
+DASHBOARD CARDS
+========================= */
+
+.resume-card{
+
+```
+background:
+rgba(5,15,40,0.7);
+
+backdrop-filter:blur(20px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius:20px;
+
+color:white;
+
+transition:0.3s;
+```
+
+}
+
+.resume-card:hover{
+
+```
+transform:translateY(-6px);
+
+box-shadow:
+0 20px 35px rgba(0,100,255,0.2);
+```
+
+}
+
+.resume-card-body{
+padding:25px;
+}
+
+.resume-name{
+
+```
+color:white;
+
+font: size 34px;px;
+
+font-weight:bold;
+```
+
+}
+
+.resume-email,
+.resume-phone{
+
+```
+color:#d1d5db;
+```
+
+}
+
+.action-buttons{
+
+```
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+```
+
+}
+.template-radio{
+    display:none;
+}
+
+.template-radio:checked + .template-card{
+
+    border:
+    2px solid #3b82f6;
+
+    box-shadow:
+    0 0 25px rgba(
+        59,
+        130,
+        246,
+        0.5
+    );
+
+    transform:translateY(-5px);
+}
